@@ -1,5 +1,5 @@
 /*
- * Calendar v0.01
+ * columnCalendar v0.01
  * Copyleft - 2015  Javier Dominguez Gomez
  * Written by Javier Dominguez Gomez <jdg@member.fsf.org>
  * GnuPG Key: 6ECD1616
@@ -18,10 +18,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * Compilation:   gcc -Wall -c -MMD -MP -MF"calendar.d" -MT"calendar.d" -o "calendar.o" calendar.c
- *                gcc -o calendar calendar.o
+ * Compilation:   gcc -Wall -c -MMD -MP -MF"columnCalendar.d" -MT"columnCalendar.d" -o "columnCalendar.o" columnCalendar.c
+ *                gcc -o columnCalendar columnCalendar.o
  *
- * Usage:         ./calendar
+ * Usage:         ./columnCalendar
  *
  */
 
