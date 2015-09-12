@@ -160,6 +160,8 @@ void trimestre(int ano,int mesMin,int mesMax){
 }
 
 int main(void) {
+	int ano;
+
 	system("clear");
 	fprintf(stdout,"Year (1..3000)? ");
 	scanf("%d", &ano);
