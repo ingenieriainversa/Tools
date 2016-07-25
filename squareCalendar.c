@@ -1,6 +1,6 @@
 /*
  * squareCalendar v0.01
- * Copyleft - 2015  Javier Dominguez Gomez
+ * Copyleft - 2011  Javier Dominguez Gomez
  * Written by Javier Dominguez Gomez <jdg@member.fsf.org>
  * GnuPG Key: 6ECD1616
  * Madrid, Spain
@@ -27,13 +27,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-void trimestre(int,int,int);
-void semana (int,int,int,int,int,int);
-void cabecera(int,int,int);
-int calcularDiasMes(int,int);
-int zeller(int,int);
-void puntos(int,int);
 
 void puntos(int p,int max){
 	if(p == max){
@@ -69,10 +62,11 @@ int calcularDiasMes(int ano, int mes){
 }
 
 void cabecera(int ano,int min,int max){
+	int mes;
 	char *nombreMes, *linea = "======================", *diasSemana = "LU MA MI JU VI | SA DO";
 
 	fprintf(stdout,"\n");
-	for(int mes = min; mes <= max; mes++){
+	for(mes = min; mes <= max; mes++){
 		switch(mes){
 			case 1: nombreMes = "Enero";break;
 			case 2: nombreMes = "Febrero";break;
@@ -99,9 +93,9 @@ void cabecera(int ano,int min,int max){
 }
 
 void semana(int numSemana,int min,int max,int ano,int mesMin,int mesMax){
-	int z;
+	int p, z, mes, dia;
 
-	for(int mes = mesMin; mes <= mesMax; mes++){
+	for(mes = mesMin; mes <= mesMax; mes++){
 		if(zeller(ano,mes) == 0){
 			z = 6;
 		} else {
@@ -116,7 +110,7 @@ void semana(int numSemana,int min,int max,int ano,int mesMin,int mesMax){
 
 		int diasMes = calcularDiasMes(ano,mes);
 
-		for(int dia = 1;dia <=diasMes;dia++){
+		for(dia = 1;dia <=diasMes;dia++){
 			z++;
 			if(z <= max && z >= min){
 				if(z == 6 || z == 13 || z == 20 || z == 27 || z == 34){
@@ -132,11 +126,11 @@ void semana(int numSemana,int min,int max,int ano,int mesMin,int mesMax){
 		}
 
 		if((z == 29 || z == 30 || z == 31 || z == 32 || z == 33 || z == 34) && numSemana == 5){
-			for(int p=z;p<=34;p++){
+			for(p=z;p<=34;p++){
 				puntos(p,33);
 			}
 		} else if((z == 36 || z == 37) && numSemana == 6){
-			for(int p=z;p<=41;p++){
+			for(p=z;p<=41;p++){
 				puntos(p,40);
 			}
 		}
@@ -163,15 +157,15 @@ int main(void) {
 	int ano;
 
 	system("clear");
-	fprintf(stdout,"Year (1..3000)? ");
+	fprintf(stdout,"Year? ");
 	scanf("%d", &ano);
 
-	if(ano >= 1 && ano <= 3000){
+	if(ano >= 1){
 		trimestre(ano,1,3);
 		trimestre(ano,4,6);
 		trimestre(ano,7,9);
 		trimestre(ano,10,12);
 	} else {
-		fprintf(stderr,"Error: wrong year.\n");
+		fprintf(stderr,"Error: Tiene que ser mayor que 0.\n");
 	}
 }
