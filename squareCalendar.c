@@ -21,7 +21,7 @@
  * Compilation:   gcc -Wall -c -MMD -MP -MF"squareCalendar.d" -MT"squareCalendar.d" -o "squareCalendar.o" squareCalendar.c
  *                gcc -o squareCalendar squareCalendar.o
  *
- * Usage:         ./squareCalendar
+ * Usage:         ./squareCalendar 2011
  *
  */
 
@@ -153,12 +153,11 @@ void trimestre(int ano,int mesMin,int mesMax){
 	semana(6,36,42,ano,mesMin,mesMax);
 }
 
-int main(void) {
-	int ano;
+int main(int argc, char **argv) {
+	char *p;
+	long ano = strtol(argv[1], &p, 10);
 
 	system("clear");
-	fprintf(stdout,"Year? ");
-	scanf("%d", &ano);
 
 	if(ano >= 1){
 		trimestre(ano,1,3);
@@ -166,6 +165,6 @@ int main(void) {
 		trimestre(ano,7,9);
 		trimestre(ano,10,12);
 	} else {
-		fprintf(stderr,"Error: Tiene que ser mayor que 0.\n");
+		fprintf(stderr,"Error: El primer argumento ha de ser mayor que 0.\n");
 	}
 }
